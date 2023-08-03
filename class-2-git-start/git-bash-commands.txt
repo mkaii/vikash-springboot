@@ -1,0 +1,7 @@
+git init
+git status
+git status -u (show all the changes in the i9nner folders as well)
+git add <file name>
+git add .
+git commit -m "<commit -nsg>"
+git log - to see a the commits
