@@ -3,7 +3,7 @@ git cherry-pick <commit_id> = can apply only commit to branch insted merging or 
 git stash -u = will save change in stack to be retrived when we want.will not show in staged or untracked 
 git stash apply = retrieve change from stack.
 git diff -staged = will show changes made in file.
-git diff ..staged <path> <file-name.patch> = will create a patch file with the changes made of we can send and somone can apply.
+git diff --staged <path> <file-name.patch> = will create a patch file with the changes made of we can send and somone can apply.
 
 note: had issue with installing git extension and diff so were not able to 
 test the commands to apply patch file into a branch. 
