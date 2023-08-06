@@ -1,6 +1,8 @@
 git remote add <alias_name> <.git url>
 git remote rm <alias_name>
+git remote -v 
 git branch
 git checkout -b <branch_name>
 git checkout <branch_name>
 git switch <branch_name>
+git reset <commit_id>  --hard/soft/mixed 
