@@ -5,5 +5,6 @@ git branch
 git checkout -b <branch_name>
 git checkout <branch_name>
 git switch <branch_name>
-git reset <commit_id>  --hard/soft/mixed 
+git reset <commit_id>  --hard/--soft/--mixed  
+git reset head~1 --hard/--soft/--mixed
 git rebase <branch_you_want_to_copy> 
