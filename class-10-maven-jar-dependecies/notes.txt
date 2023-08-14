@@ -1,8 +1,8 @@
 maven: a tool for manageing dependecies. a dependecy is basically a code which is not in my project 
 but we want to import that code to be able to use the funcationality of that code.
 
-Maven central repo : A location where all the dependencies and jar files are located. from which we can copy and paste in our pom.xml.
-jar file is code packaged and compressed of which me can import to access classes in project,  not needed when using dependecy. 
+Maven central repo : A location where all the dependencies and jar files are located. from which we can copy cordinates of jars and paste in our pom.xml.
+jar file is .class (compiled) code packaged and compressed of which me can import to access classes in project,  not needed when using dependecy. 
 
 dependecy : <atrifact id>
             <group id>
@@ -10,7 +10,8 @@ dependecy : <atrifact id>
                           which can have direct depencensies and transitive dependencies using atrifact id, group id,and version 
                           solves this.
 
-External libraries: this is where all the jar files of the depenndecies are downloaded(in the .m2 folder).
+External libraries: is where we have all the jore located locally in our project. 
+ .m2 -repository : this is where all the jar files of the depenndecies are downloaded and then acessesed via external libraries.
 
 
  Creating jar: we can create a jar file of project.
