@@ -1,0 +1,17 @@
+calculator notes. 
+
+oops = objects -> real world enteties, class is bluperint of that object.
+
+
+passing object into class= we do it via set(object name)
+
+null ponter = null.something.
+
+Area calculator sould not have idea about specific shape or method calculation.
+this can be achieved via interface.
+
+
+interface can point to the child class object. 
+
+the decision of which method to call is based on the type of object passed in to set()
+parennt ref can only call the overideen abstract method in child classes not the other methods in child class.
