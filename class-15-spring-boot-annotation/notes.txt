@@ -1,0 +1,30 @@
+Spring-initializr = got to url -> https://start.spring.io/ 
+, then click on language java and project maven. we can use any version but try to go for non snapshot 
+versions. after that you just specify name accordingly and chose jar. After that we press the jdk version you have in intelliji and lastly 
+we add the spring web dependecny. You can explore how the project looks like after that you can clcik generate which will download a zip file of which you need 
+to open in intelliji. There you have it, Now e are working wit  a spring boot project
+
+
+What is annotation ? 
+
+for exsmple @overide is a core java annotation which mkaes the child class of extended parent class overide the method found in the parent class. 
+basically annotaion tells the code to do something, in this case it was to overide the method from the parent class
+
+Annotation is actually the way we interact with spring boot framework. 
+
+@SpringBootApplication annotaion we have in main, it consist of 3 basic anotaitons = 
+1.@SpringBootConfiguration -> Configuration = Class level snnotation.Purpouse is creating bean methods ,Bean = is any java object which is handles by spring
+only works when @Configuration is set on Class level and @Bean is set on methods if any of thesse are wmissing it will not work.thaycan togheter call methods which are responsible dor BEA/object creating
+THis happens whn springboot starts it scans for the @Configuration and  @Bean and calls them.
+
+2.@EnableAutoConfiguration  = All the configuration that needs to be done in the code hapens autoamatically we dont have to do it mnually ->
+ application.properties  internal configuration and Autowiring
+
+3.@CompenentScan  -> @component =  Class leveö annotation on nany clas you write  is  and c reate constructor its object is getting created
+
+to see where we can use what annotation we g to the @Target annotation 
+
+@Autowired= 
+
+
+
