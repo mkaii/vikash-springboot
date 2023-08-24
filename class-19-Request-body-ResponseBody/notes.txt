@@ -1,0 +1,27 @@
+for api we need to write on the class @RestController and use a corresponding enpoint. Only when both of these are here the 
+method corresponding to the endpoint acts as an api
+
+@Restcontroller is a combination of @Controller and @Responsebody.
+
+
+@Controller is enought to expose the method as an api but the problem occurs during returning the responsebody 
+
+
+
+client  ---HttpRequest--> server 
+
+client  <---Httpresponse-- server  
+
+Responsebody=
+whatever the method is returning the Responsbody is taking that value and puts the serialized version of that in the body of the hhtp message that will be sent back as 
+an response. an on the client level it is deserialised and shows you what that message actually meant.this happens because of responsebody 
+
+
+@RequestBody = where we assign values for variables in body via JSON.  Basically whenever we want 
+to send complex object it is suggested to use requestbody when working with muliple variables.
+for anything else we can always use pathvarbales and request params and use @RequestBody(catch = we just have one body)
+
+
+API for complex objects = 
+
+you can create a class  with variables and setters and getters. And from the api we kan make object of student class which will point to the variables in the student class.
