@@ -43,12 +43,9 @@ return "todo is not removed as id does not exist";
 
 
     // get a todo based on id
-    @GetMapping("todos/{todoId}")
-    public Todo getTodoById(@PathVariable Integer todoId)
-    {
-        return todoList.get(todoId -1);
-    }
 
+
+/*
     @PutMapping("todo/{oldConent}/{newContent}")
     public String replaceContent( @PathVariable String oldConent , @PathVariable String newContent){
         for (int i = 0; i <getTodoList().size() ; i++) {
@@ -59,6 +56,7 @@ return "todo is not removed as id does not exist";
         }
         return "content is not updated";
 
+*/
 
 
     }

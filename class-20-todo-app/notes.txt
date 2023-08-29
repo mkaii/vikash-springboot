@@ -5,7 +5,7 @@ funtionality = we shoudld be able to delete,add,update,mark if done/undone,
 first step of coding is walways planning so here is the plan for app= 
 
 1. Create todo class with all the variables required =  id,content,done,creationTimeStamp,dueDate and doneTimeStamp after that  generate getters and setters.
-2. we want a list of todos so we will ceate TodoFactory class with @configuration and @Bean method  in hee we will pass Todo in listand it will return a new arraylist which initial value will be empty
+2. we want a list of todos so we will ceate TodoFactory class with @configuration and @Bean method  in hee we will specify bean type and it will return a new arraylist which initial value will be empty
 this is the data scourse where we will be storing the toodos. 
 3.Create Api = 
 @Get-api: get all todos,get all done/undone todos,get todos close to dueDate and get todos done on time and not on time.
