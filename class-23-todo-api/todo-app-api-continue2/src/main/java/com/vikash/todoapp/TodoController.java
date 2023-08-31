@@ -12,8 +12,8 @@ import java.util.List;
 public class TodoController {
 
 
-    @Autowired  // checks if there is @Bean assigns object of that to todiList
-    List<Todo> todoList;  // does depencency injecting here with the kind of object you have
+    @Autowired  // checks if there is @Bean assigns object of that to todiList does depencency injecting here with the kind of object you have
+    List<Todo> todoList;  // todoList is just s reference of List<Todo>
 
     //get
     @GetMapping("todos")
@@ -55,7 +55,7 @@ public class TodoController {
         List<Todo> doneList = new ArrayList<>();  // create a new list to be able to return done task
         for (Todo todo : todoList) {  // iteriate once over all the todos in todoList
             if (!todo.isDone() == false)  // check which tasks are marked as true store in todo
-                doneList.add(todo);         // add the done tasks  to undonelist
+                doneList.add(todo);         // add the done tasks  to donelist
 
 
         }
@@ -64,7 +64,7 @@ public class TodoController {
     }
         //post
         @PostMapping("todo")
-        public String addToDo (@RequestBody Todo myTodo){  // passing in string in myTodo via reguesstbody
+        public String addToDo (@RequestBody Todo myTodo){  // return type String
             myTodo.setCreationTimeStamp(LocalDateTime.now()); // will set creation time when adding a task
             todoList.add(myTodo); // adding string to list
             return "todo added";
@@ -74,10 +74,10 @@ public class TodoController {
 
         @PostMapping("todos")
         public String addToDos (@RequestBody List < Todo > myTodos) {  // passing in value for object
-   /*    for (Todo todo : myTodos){  // iterate over every element of myTodo  store it in todo
+   /*    for (Todo todo : myTodos){  // iterate over every element of myTodos  store it in todoList
             todoList.add(todo);  // take every element and append it to the list
         }*/
-            todoList.addAll(myTodos); // adding objeccts  to list
+            todoList.addAll(myTodos); // adding list to another list
             return myTodos.size() + "todos added";
         }
 
@@ -97,6 +97,33 @@ public class TodoController {
             return null;
 
         }
+        //marks a task as done
+
+    @PutMapping("todo/done/{id}")
+    public String markTodoDone (@PathVariable Integer id){
+        for (int i = 0; i < todoList.size(); i++) {
+            if (todoList.get(i).getId().equals(id)) {
+                todoList.get(i).setDone(true); // for a particular task id that matches id passed via pathvariable set that as done
+
+                return "content is marked done";
+            }
+        }
+        return "todo not found";
+
+    }
+
+    @PutMapping("todo/undone/{id}")
+    public String markTodoUnDone (@PathVariable Integer id){
+        for (int i = 0; i < todoList.size(); i++) {
+            if (todoList.get(i).getId().equals(id)) {
+                todoList.get(i).setDone(false); // for a particular task id that matches id passed via pathvariable set that as undone
+
+                return "content is marked done";
+            }
+        }
+        return "todo not found";
+
+    }
 
 
 //delete
@@ -115,7 +142,7 @@ public class TodoController {
 
 // remove muliple todos
 
-    @DeleteMapping("todos/{id}/{id2}")
+/*    @DeleteMapping("todos/{id}/{id2}")
     public String deleteTodos (@PathVariable Integer id,@PathVariable Integer id2) {
         int counter = 0;
         for (int i = 0; i < todoList.size(); i++) {
@@ -136,8 +163,26 @@ public class TodoController {
         }else {
             return "no todos removed";
         }
+    }*/
+
+    @DeleteMapping("todos/{ids}")
+    String removeTodos(@RequestBody List<Integer> idList) {// list of id thats why List<Integer>
+        int counter = 0;
+        for (int i = 0; i < todoList.size() ; i++) {  // itarate over todoslist to find our list with all taks and their respective ids
+
+            for (int j = 0; j < idList.size() ; j++) {  // iterate idlist to find our ids we pass via requestbody
+                if (todoList.get(i).getId().equals(idList.get(j))){  // if a perticular tasks id matched ith an id from idList
+                    todoList.remove(i);  // remove that task
+                    counter++;   // counter to check how many times we enter the if condition so we can se how many taks where delteted
+                    break;  // no need to continue iterating after task  is removed so we need to break from inner loop to upper loop
+                }
+            }
+        }
+     return counter + " todos where removed";
     }
 
-    }
+
+
+}
 
 
