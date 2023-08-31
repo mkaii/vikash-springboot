@@ -3,6 +3,7 @@ package com.vikas.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,6 +76,65 @@ public class TodoController {
     }
 
 
+    //get urgent todos:
+    //sort based on due date and should be marked as undone
+
+    @GetMapping("todo/urgent")
+    public List<Todo> getUrgentTodos()
+    {
+        List<Todo> urgentUndoneTodos  =  new ArrayList<>();
+
+        for(Todo todo : todoList)
+        {
+            if(!todo.isDone())
+            {
+                urgentUndoneTodos.add(todo);
+            }
+        }
+
+        urgentUndoneTodos.sort((t1,t2)-> t1.getDueDateTime().compareTo(t2.getDueDateTime()));
+
+        return urgentUndoneTodos;
+
+    }
+
+
+    //get all todos which were done on time
+    @GetMapping("todo/onTime")
+    public List<Todo> getTodosDoneOnTime()
+    {
+        List<Todo> doneTodosOnTime =  new ArrayList<>();
+
+        for(Todo todo : todoList)
+        {
+            if(todo.isDone() && todo.getDoneTimeStamp().isBefore(todo.getDueDateTime()))
+            {
+                doneTodosOnTime.add(todo);
+            }
+        }
+
+        return doneTodosOnTime;
+
+    }
+
+    //get all todos which were not done on time
+    @GetMapping("todo/not/onTime")
+    public List<Todo> getTodosNotDoneOnTime()
+    {
+        List<Todo> doneTodosNotOnTime =  new ArrayList<>();
+
+        for(Todo todo : todoList)
+        {
+            if(todo.isDone() && todo.getDoneTimeStamp().isAfter(todo.getDueDateTime()))
+            {
+                doneTodosNotOnTime.add(todo);
+            }
+        }
+
+        return doneTodosNotOnTime;
+
+    }
+
 
 
     //post
@@ -92,12 +152,13 @@ public class TodoController {
     @PostMapping("todos")
     public String addTodos(@RequestBody List<Todo> myTodos)
     {
-       todoList.addAll(myTodos);
+       //todoList.addAll(myTodos);
 
-       /* for(Todo todo : myTodos)
+        for(Todo todo : myTodos)
         {
+            todo.setCreationTimeStamp(LocalDateTime.now());
             todoList.add(todo);
-        }*/
+        }
 
         return myTodos.size() + " todos were added";
     }
@@ -138,6 +199,7 @@ public class TodoController {
                 if(!todo.isDone())
                 {
                     todo.setDone(true);
+                    todo.setDoneTimeStamp(LocalDateTime.now());
                     return "todo done";
                 }
                 else {
@@ -167,6 +229,30 @@ public class TodoController {
                 {
                     return "todo already marked un-done";
                 }
+
+            }
+        }
+
+        return "Todo not found";
+    }
+
+
+    //increase the num of due dates :
+    @PutMapping("todo/increase/dueDate/{id}/{numDays}")
+    String increaseDueDate(@PathVariable Integer id,@PathVariable Integer numDays)
+    {
+        for(Todo todo : todoList)
+        {
+            if(todo.getId().equals(id))
+            {
+               LocalDateTime currentDueDate = todo.getDueDateTime();
+
+               //add numDays to original date to get new date
+
+               LocalDateTime newDueDate = todo.getDueDateTime().plusDays(numDays);
+               todo.setDueDateTime(newDueDate);
+               return "todo due date updated!!!";
+
 
             }
         }
@@ -250,6 +336,28 @@ public class TodoController {
 
 
     }
+
+
+    @DeleteMapping("todos/{limit}")
+    public String cleanupUndoneTasks(@PathVariable Integer limit)
+    {
+        int counter =0;
+        for (int i=0;i<todoList.size();i++ )
+        {
+            Todo todo = todoList.get(i);
+            Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDateTime());
+            if(!todo.isDone() &&  - Math.abs(diff.toDays()) >= limit )
+            {
+                todoList.remove(todo);
+                counter++;
+            }
+        }
+
+        return counter + " undone expired todo were removed";
+    }
+
+
+
 
 
 }
