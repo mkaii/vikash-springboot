@@ -338,7 +338,7 @@ public class TodoController {
     }
 
 
-    @DeleteMapping("todos/{limit}")
+    @DeleteMapping("todos/undone/time/{limit}")
     public String cleanupUndoneTasks(@PathVariable Integer limit)
     {
         int counter =0;
@@ -346,7 +346,7 @@ public class TodoController {
         {
             Todo todo = todoList.get(i);
             Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDateTime());
-            if(!todo.isDone() &&  - Math.abs(diff.toDays()) >= limit )
+            if(!todo.isDone() &&  Math.abs(diff.toDays()) >= limit )
             {
                 todoList.remove(todo);
                 counter++;
@@ -354,6 +354,27 @@ public class TodoController {
         }
 
         return counter + " undone expired todo were removed";
+    }
+
+    // delete   done  todos that has passed the due date  based on user input time  limit
+    @DeleteMapping("todos/done/timeLimit/{limit}")
+    public String cleanDoneTasks(@PathVariable Integer limit){
+        int counter = 0;
+        for (int i = 0; i < todoList.size() ; i++) {
+            Todo todo = todoList.get(i);
+
+            if (todo.isDone()){
+
+                Duration diff = Duration.between(LocalDateTime.now(),todo.getDoneTimeStamp());
+                if (Math.abs(diff.toDays())>= limit )
+                {
+                    todoList.remove(todo);
+                    counter++;
+                }
+
+            }
+        }
+        return counter + " done expired todos were removed ";
     }
 
 
