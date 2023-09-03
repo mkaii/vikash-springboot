@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +34,24 @@ public class TodoController {
         return null;
     }
 
+    // get urgent tasks, sort based on due date and should be marked as undone
+    @GetMapping("todo/urgent")
+    public List<Todo> getUrgentTasks(){    // returning a list of todos
 
-    // mark todo as undone
+        List<Todo> urgentUndoneTodos = new ArrayList<>();  // list of undone todos
+        for (Todo todo : todoList) {
+
+
+         if (!todo.isDone()){
+             urgentUndoneTodos.add(todo);
+         }
+        }
+           urgentUndoneTodos.sort((t1,t2)-> t1.getDueDate().compareTo(t2.getDueDate()));  // tell it to sort then tell it how it should be sorted(if i get 2 todos this is how i want them to compare) if the date caller is less then what i have passed inside comapre to we will get negativa response and it will sort based on that(acending)
+          return urgentUndoneTodos;
+    }
+
+
+    // get all undone todos
     @GetMapping("todos/undone")
     public List<Todo> getUndoneTodos() {
 
@@ -48,7 +66,7 @@ public class TodoController {
 
     }
 
-    // mark  todo as done
+    // get all done todos
     @GetMapping("todos/done")
     public List<Todo> getDoneTodos() {
 
@@ -62,6 +80,35 @@ public class TodoController {
         return doneList;     // reurning the list with done tasks when you have scanned the whole list only then return thats why we have return oustide for loop
 
     }
+
+    // get all todos that where done on time
+    @GetMapping("todo/onTime")
+    public List<Todo> doneOneTime(){
+
+        List<Todo> doneOntime = new ArrayList<>(); // creating new list tostore todos done in time
+        for (Todo todo:todoList){ // traversing trough the list
+            if (todo.isDone() && todo.getDoneTimeStamp().isBefore(todo.getDueDate())){  // if task is doneTimetamp is  before due date
+                doneOntime.add(todo);  // add those task to done on tume
+            }
+
+        }
+        return doneOntime;  // return the done on time list
+        }
+    // get all todos that where not done on time
+    @GetMapping("todo/notOnTime")
+    public List<Todo> notDoneOneTime(){
+
+        List<Todo> notDoneOnTime = new ArrayList<>(); // creating new list tostore todos not done in time
+        for (Todo todo:todoList){ // traversing trough the list
+            if (todo.isDone() && todo.getDoneTimeStamp().isAfter(todo.getDueDate())){  // id task is doneTimeStamp is after  due date
+                notDoneOnTime.add(todo);  // add those task to done on tume
+            }
+
+        }
+        return notDoneOnTime;  // return the done on time list
+    }
+
+
         //post
         @PostMapping("todo")
         public String addToDo (@RequestBody Todo myTodo){  // return type String
@@ -74,13 +121,16 @@ public class TodoController {
 
         @PostMapping("todos")
         public String addToDos (@RequestBody List < Todo > myTodos) {  // passing in value for object
-   /*    for (Todo todo : myTodos){  // iterate over every element of myTodos  store it in todoList
-            todoList.add(todo);  // take every element and append it to the list
-        }*/
-            todoList.addAll(myTodos); // adding list to another list
-            return myTodos.size() + "todos added";
-        }
+            for (Todo todo : myTodos) {  // iterate over every element of myTodos  store it in todoList
 
+                todo.setCreationTimeStamp(LocalDateTime.now());
+                todoList.add(todo);  // take every element and append it to the list
+               // todoList.addAll(myTodos); // adding list to another list
+
+            }
+            return myTodos.size() + "todos added";
+
+        }
 
         // update
         @PutMapping("name/{oldTaskContent}/{newTaskContent}")
@@ -104,14 +154,14 @@ public class TodoController {
         for (int i = 0; i < todoList.size(); i++) {
             if (todoList.get(i).getId().equals(id)) {
                 todoList.get(i).setDone(true); // for a particular task id that matches id passed via pathvariable set that as done
-
-                return "content is marked done";
+                todoList.get(i).setDoneTimeStamp(LocalDateTime.now()); // will register time when marking as done
+                return "todo done";
             }
         }
         return "todo not found";
 
     }
-
+    //marks a task as undone
     @PutMapping("todo/undone/{id}")
     public String markTodoUnDone (@PathVariable Integer id){
         for (int i = 0; i < todoList.size(); i++) {
@@ -123,6 +173,23 @@ public class TodoController {
         }
         return "todo not found";
 
+    }
+
+    // increase num of due date by days
+    @PutMapping("todo/increase/{id}/{numDays}")
+    String inceraseDueDate(@PathVariable Integer id, @PathVariable Integer numDays) {
+        for (Todo todo : todoList) {
+
+            if (todo.getId().equals(id)) {   // if id matches
+                LocalDateTime currentDueDate = todo.getDueDate(); // getting current due date
+
+                // add number of days to orgiginal due date
+                LocalDateTime newdate = todo.getDueDate().plusDays(numDays); // add num days to the original due date via plusDays method
+                todo.setDueDate(newdate);  // setting that new due date
+                return "due date is updated ";
+            }
+        }
+        return "todo not found";
     }
 
 
@@ -140,39 +207,15 @@ public class TodoController {
             return "todo not dound";
         }
 
-// remove muliple todos
-
-/*    @DeleteMapping("todos/{id}/{id2}")
-    public String deleteTodos (@PathVariable Integer id,@PathVariable Integer id2) {
-        int counter = 0;
-        for (int i = 0; i < todoList.size(); i++) {
-            Todo todo = todoList.get(i); // creating variable todo
-            if (todo.getId().equals(id) || todo.getId().equals(id2) )  {
-                todoList.remove(i);
-                counter++;
-            }
-
-
-        }
-
-        if (counter == 1) {
-            return  "one todo removed";
-        }
-        else if (counter == 2) {
-            return "do removed";
-        }else {
-            return "no todos removed";
-        }
-    }*/
-
-    @DeleteMapping("todos/{ids}")
+// delete multiple todos
+    @DeleteMapping("todos/ids")
     String removeTodos(@RequestBody List<Integer> idList) {// list of id thats why List<Integer>
         int counter = 0;
         for (int i = 0; i < todoList.size() ; i++) {  // itarate over todoslist to find our list with all taks and their respective ids
-
+            Todo currentTodoFromExistingList= todoList.get(i);
             for (int j = 0; j < idList.size() ; j++) {  // iterate idlist to find our ids we pass via requestbody
-                if (todoList.get(i).getId().equals(idList.get(j))){  // if a perticular tasks id matched ith an id from idList
-                    todoList.remove(i);  // remove that task
+                if (currentTodoFromExistingList.getId().equals(idList.get(j))){  // if a perticular tasks id matched ith an id from idList
+                    todoList.remove(currentTodoFromExistingList);  // remove that task
                     counter++;   // counter to check how many times we enter the if condition so we can se how many taks where delteted
                     break;  // no need to continue iterating after task  is removed so we need to break from inner loop to upper loop
                 }
@@ -180,6 +223,38 @@ public class TodoController {
         }
      return counter + " todos where removed";
     }
+
+// delete   undone  todos that has passed the due date  based on user input time  limit
+    @DeleteMapping("todos/{limit}")
+    public String cleanUndoneTasks(@PathVariable Integer limit){
+        int counter = 0;
+        for (int i = 0; i < todoList.size() ; i++) {
+            Todo todo = todoList.get(i);
+            Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDate());
+           if (!todo.isDone() && -Math.abs(diff.toDays())>= limit){  // if task is undone and
+               todoList.remove(todo);
+               counter++;
+           }
+        }
+        return counter + " undone expired todos were removed ";
+    }
+
+    // delete   done  todos that has passed the due date  based on user input time  limit
+    @DeleteMapping("todos1/{limit2}")
+    public String cleanDoneTasks(@PathVariable Integer limit2){
+        int counter = 0;
+        for (int i = 0; i < todoList.size() ; i++) {
+            Todo todo = todoList.get(i);
+            Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDate());
+            if (todo.isDone() && -Math.abs(diff.toDays())>= limit2){
+                todoList.remove(todo);
+                counter++;
+            }
+        }
+        return counter + " done expired todos were removed ";
+    }
+
+
 
 
 
