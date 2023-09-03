@@ -79,7 +79,7 @@ public class TodoController {
     //get urgent todos:
     //sort based on due date and should be marked as undone
 
-    @GetMapping("todo/urgent")
+    @GetMapping("todos/urgent")
     public List<Todo> getUrgentTodos()
     {
         List<Todo> urgentUndoneTodos  =  new ArrayList<>();
@@ -100,7 +100,7 @@ public class TodoController {
 
 
     //get all todos which were done on time
-    @GetMapping("todo/onTime")
+    @GetMapping("todos/onTime")
     public List<Todo> getTodosDoneOnTime()
     {
         List<Todo> doneTodosOnTime =  new ArrayList<>();
@@ -118,7 +118,7 @@ public class TodoController {
     }
 
     //get all todos which were not done on time
-    @GetMapping("todo/not/onTime")
+    @GetMapping("todos/not/onTime")
     public List<Todo> getTodosNotDoneOnTime()
     {
         List<Todo> doneTodosNotOnTime =  new ArrayList<>();
@@ -285,8 +285,24 @@ public class TodoController {
     @DeleteMapping("todos")
     String removeTodos(@RequestBody List<Integer> idList)
     {
+        int counter= 0;
 
-        int counter = 0;
+        for(Integer id : idList)
+        {
+            for(Todo todo : todoList)
+            {
+                if(id.equals(todo.getId()))
+                {
+                    todoList.remove(todo);
+                    counter++;
+                    break;
+                }
+            }
+        }
+
+        return counter  + " todos were removed";
+
+       /* int counter = 0;
         for(int i=0;i<todoList.size();i++)
         {
             Todo currentTodoFromExistingList = todoList.get(i);
@@ -301,7 +317,9 @@ public class TodoController {
             }
         }
 
-        return counter  + " todos were removed";
+        return counter  + " todos were removed";*/
+
+
 
        /* int counter = 0;
         for(Todo todo : todoList)
