@@ -211,27 +211,36 @@ public class TodoController {
     @DeleteMapping("todos/ids")
     String removeTodos(@RequestBody List<Integer> idList) {// list of id thats why List<Integer>
         int counter = 0;
+        List<Todo> todosToRemove = new ArrayList<>(); // create a list to store all the todos to remove
+
         for (int i = 0; i < todoList.size() ; i++) {  // itarate over todoslist to find our list with all taks and their respective ids
             Todo currentTodoFromExistingList= todoList.get(i);
             for (int j = 0; j < idList.size() ; j++) {  // iterate idlist to find our ids we pass via requestbody
                 if (currentTodoFromExistingList.getId().equals(idList.get(j))){  // if a perticular tasks id matched ith an id from idList
-                    todoList.remove(currentTodoFromExistingList);  // remove that task
+                    todosToRemove.add(currentTodoFromExistingList);  // add the matching tasks to todosToRemove,
                     counter++;   // counter to check how many times we enter the if condition so we can se how many taks where delteted
                     break;  // no need to continue iterating after task  is removed so we need to break from inner loop to upper loop
                 }
             }
         }
+        todoList.removeAll(todosToRemove);  // remove all the todos stored in todosToRemove list
+        // instef of removing the tasks directly from todolist, we store all the tasks in a list todosToRemove and remove all in one go.
+        //  because when we modify todolist directly while iterating over it it will not check condition for all the id correctly there for we should
+        // not directly modify list while we are iteriating over it
      return counter + " todos where removed";
     }
 
 // delete   undone  todos that has passed the due date  based on user input time  limit
-    @DeleteMapping("todos/{limit}")
+
+    @DeleteMapping("todos/undone/passedDueDate/{limit}")
     public String cleanUndoneTasks(@PathVariable Integer limit){
         int counter = 0;
         for (int i = 0; i < todoList.size() ; i++) {
             Todo todo = todoList.get(i);
-            Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDate());
-           if (!todo.isDone() && Math.abs(diff.toDays())>= limit){  // if task is undone and the absolute value more then the limit
+            Duration diff = Duration.between(LocalDateTime.now(),todo.getDueDate()); // diffrence betwwen time noww and due date
+           if (!todo.isDone() && Math.abs(diff.toDays())>= limit){  // if task is undone and the absolute value(actual diffrence betwwen time noww and due date) id more then the limit user passes
+               // we cant use comare to because it will return a - + 0 value not the actual  diffrence thats whywe need absolute value insted. and we cant use diff.toDays only becuase w edont know if it will do LocalDateTime.now()- todo.getDueDate()) or the other way oround
+               // based on that it will give positive or negative value thats why we nee to calculate absolute value insted which will always be postivive.
                todoList.remove(todo);  // delete that todo
                counter++;
            }
@@ -239,31 +248,32 @@ public class TodoController {
         return counter + " undone expired todos were removed ";
     }
 
-    // delete   done  todos that has passed the due date  based on user input time  limit
-    @DeleteMapping("todos1/{limit2}")
-    public String cleanDoneTasks(@PathVariable Integer limit2){
+    // delete   done  todos that has passed the donetimestamp  based on user input time  limit
+    @DeleteMapping("todo/done/timeLimit/{limit}")
+    public String cleanDoneTasks(@PathVariable Integer limit){
         int counter = 0;
         for (int i = 0; i < todoList.size() ; i++) {
             Todo todo = todoList.get(i);
 
-            if (todo.isDone()){
+            if (todo.isDone()){  // only check the diffrence locla date time and donetimestamp of the tasks that are done
 
-                Duration diff = Duration.between(LocalDateTime.now(),todo.getDoneTimeStamp());
-                if (Math.abs(diff.toDays())>= limit2 )
-                {
+                Duration diff = Duration.between(LocalDateTime.now(),todo.getDoneTimeStamp());   //diffrence locla date time and donetimestamp(tells us when marked as done)
+                if (Math.abs(diff.toDays())>= limit )  // delete the task which are marked done after the certain time limit passssed by uder, so if absolute value is more  then limit delete, will calculate in days
+
                     todoList.remove(todo);
                     counter++;
                 }
 
             }
-        }
         return counter + " done expired todos were removed ";
+        }
+
     }
 
 
 
 
 
-}
+
 
 
