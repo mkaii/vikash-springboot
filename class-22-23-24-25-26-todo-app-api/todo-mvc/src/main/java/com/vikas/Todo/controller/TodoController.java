@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class TodoController {
 
-    @Autowired
+    //@Autowired
     TodoService todoService;
 
     //get
