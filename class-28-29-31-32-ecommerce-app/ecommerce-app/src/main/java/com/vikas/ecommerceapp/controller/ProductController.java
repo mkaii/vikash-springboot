@@ -1,6 +1,7 @@
 package com.vikas.ecommerceapp.controller;
 
 import com.vikas.ecommerceapp.model.Category;
+import com.vikas.ecommerceapp.model.PriceStrategy;
 import com.vikas.ecommerceapp.model.Product;
 import com.vikas.ecommerceapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,8 +95,29 @@ public class ProductController {
     }
 
 
-    //PUT
+    // remove single product
+    @DeleteMapping("product/id/{id}")
+    public String deleteProduct(@PathVariable Integer id){
+        return productService.deleteProduct(id);
+    }
+
+    // remove muliple products
+    @DeleteMapping("products/ids")
+    public String deleteProduct(@RequestBody List<Integer>  idList){
+        return productService.deleteProducts(idList);
+    }
+
+    // remove all products based on category
+
+    @DeleteMapping("products/{category}")
+    public String deleteAllProductByCategory(@PathVariable Category category){
+        return productService.deleteAllProductsByCategory(category);
+    }
 
 
-    //DELETE
+    @PutMapping("products/category/{category}/PriceStrategy/{strategy}/percentage/{percentage}")
+    String updatePriceBYCategory(@PathVariable Category category,@PathVariable  PriceStrategy strategy,@PathVariable  float percentage)
+    {
+        return productService.updatePriceBYCategory(category,strategy,percentage);
+    }
 }
