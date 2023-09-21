@@ -5,6 +5,8 @@ import com.vikash.simpleecommrese.model.Employee;
 import com.vikash.simpleecommrese.model.IncreasOrDeacrease;
 import com.vikash.simpleecommrese.service.EmployeeService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -71,8 +73,8 @@ public class EmployeeController {
     }
 
     // get all employees below a certain age
-    @GetMapping("empolyees/below/age/{}")
-    public List<Employee> getEmployeesBelowAge(@PathVariable Integer age){
+    @GetMapping("empolyees/below/age/{age}")
+    public List<Employee> getEmployeesBelowAge(@PathVariable @Min(18) @Max(60) Integer age){
         return employeeService.getEmployeesBelowAge(age);
     }
 
@@ -81,7 +83,7 @@ public class EmployeeController {
 
     // add single employee
     @PostMapping("employee")
-    public String addEmployee(@RequestBody Employee employee){
+    public String addEmployee(@RequestBody @Valid Employee employee){
         employeeService.addEmployee(employee);
         return "added";
     }
@@ -89,7 +91,7 @@ public class EmployeeController {
 
     // add multiple employees
 
-    @PostMapping("products")
+    @PostMapping("employees")
     public String addProducts(@RequestBody @Valid List<Employee> employees){
         employeeService.addEmployees(employees);
         return "added" + employees.size() + "products";
