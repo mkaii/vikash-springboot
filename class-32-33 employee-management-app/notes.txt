@@ -1,4 +1,4 @@
-@NotNUll = can not pass value that is 0
+@NotNUll = can not pass null --> nothing 
 
 @notEmpty= size more then zero and needs to pass character
 
