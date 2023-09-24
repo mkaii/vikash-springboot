@@ -1,7 +1,9 @@
 package com.example.vikash.hotelmanagment.controller;
 
 import com.example.vikash.hotelmanagment.model.Room;
+import com.example.vikash.hotelmanagment.model.Type;
 import com.example.vikash.hotelmanagment.service.RoomService;
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +46,24 @@ public class RoomController {
         return service.IfRoomExist(id);
     }
 
-    
+
+    @GetMapping("rooms/availableBy/type{type}")
+    public List<Room> availableByType(@PathVariable Type type){
+
+     return service.availableByType(type);
+    }
+
+    @GetMapping("rooms/available")
+    public List<Room> allAvailableRooms(){
+        return service.allAvailableRoooms();
+    }
+
+
+
+   @GetMapping("rooms/count")
+    public Integer countRooms(){
+        return service.countRooms();
+    }
 
 
     //Delete

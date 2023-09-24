@@ -3,9 +3,11 @@ package com.example.vikash.hotelmanagment.service;
 
 import com.example.vikash.hotelmanagment.dao.IRoomRepo;
 import com.example.vikash.hotelmanagment.model.Room;
+import com.example.vikash.hotelmanagment.model.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,4 +61,31 @@ public class RoomService {
 
         return "rooms with given ids where removed";
     }
-}
+
+    public List<Room> availableByType(Type type) {
+        List<Room> roomsAvailableByType = new ArrayList<>();
+        for(Room room: getAllRooms()){
+           if (room.isRoomAvailable() && room.getRoomType().equals(type)){
+               roomsAvailableByType.add(room);
+            }
+
+        }
+        return  roomsAvailableByType;
+    }
+
+    public List<Room> allAvailableRoooms() {
+        List<Room> allRoomsAvailable = new ArrayList<>();
+        for(Room room: getAllRooms()){
+            if(room.isRoomAvailable()== true){
+               allRoomsAvailable.add(room);
+            }
+        }
+        return allRoomsAvailable;
+    }
+
+    public Integer countRooms() {
+        return getAllRooms().size();
+    }
+    }
+
+
