@@ -12,6 +12,7 @@ public interface IStockRepo extends CrudRepository<Stock,Long> {
     List<Stock> findByStockTypeAndStockPriceLessThanEqual(Type type, double price);
 
     List<Stock> findByStockName(String stockName);
+    List<Stock> findByStockOwnerCountGreaterThanAndStockPriceLessThanEqual(Integer count,double price);
 
   //  List<Stock> findByStockPriceAndStockName(double price,String name);
 }

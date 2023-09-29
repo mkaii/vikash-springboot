@@ -72,10 +72,7 @@ public class StockController {
         return stockService.countStocksByName(stockName); //
     }
 
-  /*  @GetMapping("stocks/name/{name}")
-    public List<Stock> getName(@PathVariable String name){
-    return stockService.getPriceByName(name);
-    }*/
+
 
     //Delete
     @DeleteMapping("stocks")
@@ -94,35 +91,5 @@ public class StockController {
     }
 
 
- /*   @DeleteMapping("stocks/{name}")
-    public List<Stock> removeStocksByName(@PathVariable String  name ){
-        return stockService.removestocksByNames(name);
-    }  // this wont work in this way
-    
-    */
-    //removeStockById
 
-    //updateStockById
-
-    // put
-
-   /* @PutMapping("stock")
-    public Stock  updateById(@RequestBody long id, @RequestBody  Stock updatedStock ){
-
-        stockService.updateById(id,updatedStock);
-
-    }
-*/
-    //getStocksByTypeLessEqualPrice   done
-
-    // get priceByName         doene
-
-    // findByNameAndStockOwnerCount   done
-
-   // delete stock by name
-
-
-    //try all crud methods       done
-
-    //more custom finders
 }

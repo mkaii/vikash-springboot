@@ -17,6 +17,8 @@ public class StockService {
     @Autowired
     IStockRepo stockRepo;
 
+    // post
+
     public String addStocks(List<Stock> myStocks) {
 
         stockRepo.saveAll(myStocks);
@@ -28,6 +30,7 @@ public class StockService {
 
     }
 
+    // get
     public List<Stock> getAllStocks() {
         return (List<Stock>) stockRepo.findAll();
     }
@@ -51,8 +54,17 @@ public class StockService {
 
     public Integer countStocksByName(String stockName) {
        return stockRepo.findByStockName(stockName).size();
-    }  /// we get back ti this one
+    }
+    public Stock getStockById(Long id) {
+        return stockRepo.findById(id).get(); // is how you use instead of optional ¨¨
+    }
+    public List<Stock> getStocksGreaterCountLessThanEqualPrice(Integer count, double price) {
 
+        return stockRepo.findByStockOwnerCountGreaterThanAndStockPriceLessThanEqual(count,price);
+    }
+
+
+    // delete
     public String removeAllStocks() {
         stockRepo.deleteAll();
         return "all stocks where removed";
@@ -69,34 +81,10 @@ public class StockService {
 
     }
 
-  /*  public void updateById(long id, Stock updatedStock) {
-      Stock initialStock = stockRepo.findById(id);
-        if(initialStock != null){
-            initialStock.getStockName().updatedStock().setStockName());
-        }*/
-
-
-
-/*    public void updateById(long id, Stock updatedStock) {
-        Optional<Stock> optStock = stockRepo.findById(id);
-        Stock myStock = optStock.get();
 
 
 
 
-    }*/
-
- /*   public List<Stock> getPriceByName(String name) {
-        return stockRepo.findByStockName(name);
-    }*/
-
-    public Stock getStockById(Long id) {
-        return stockRepo.findById(id).get();
-    }
-
- /*   public List<Stock> removestocksByNames(String name) {
-        return stockRepo.
-    }*/
 }
 
 
@@ -110,18 +98,8 @@ public class StockService {
 
 
 
-/*
 
-    public Stock getStockById(Long id) {
-        Stock stock = stockRepo.findById(id);
 
-        if (stock != null) {
-            return stock;
-        } else {
-            return null; // Return null if the stock is not found
-        }
-    }
-*/
 
 
 
