@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.ReadingConverter;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,7 +74,6 @@ public class StockController {
     }
 
 
-
     //Delete
     @DeleteMapping("stocks")
     public String removeAllStocks(){
@@ -89,6 +89,20 @@ public class StockController {
     public String removeStocksByIds(@RequestBody List<Long> ids){
         return stockService.removeStocksByIds(ids);
     }
+
+    @GetMapping("stocks/greater/equal/owner/count/{count}/type/{type}/sort/creation/time")
+    public List<Stock> getAllStocksGreaterCountAndByTypeSortByTime(@PathVariable int count, @PathVariable Type type)
+    {
+        return stockService.getAllStocksGreaterCountAndByTypeSortByTime(count,type);
+    }
+
+
+    @GetMapping("stocks/greater/equal/time/{time}/sort/desc/price")
+    public List<Stock> getAllStocksGreaterTimeSortByPriceDesc(@PathVariable LocalDateTime time)
+    {
+        return stockService.getAllStocksGreaterTimeSortByPriceDesc(time);
+    }
+
 
 
 

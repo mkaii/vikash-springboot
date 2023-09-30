@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,7 @@ public class StockService {
     }
 
     public List<Stock> getStocksById(List<Long> ids) {
+
         return (List<Stock>) stockRepo.findAllById(ids);
     }
 
@@ -53,11 +55,15 @@ public class StockService {
     }
 
     public Integer countStocksByName(String stockName) {
-       return stockRepo.findByStockName(stockName).size();
+
+        return stockRepo.findByStockName(stockName).size();
     }
+
     public Stock getStockById(Long id) {
+
         return stockRepo.findById(id).get(); // is how you use instead of optional ¨¨
     }
+
     public List<Stock> getStocksGreaterCountLessThanEqualPrice(Integer count, double price) {
 
         return stockRepo.findByStockOwnerCountGreaterThanAndStockPriceLessThanEqual(count,price);
@@ -82,9 +88,15 @@ public class StockService {
     }
 
 
+    public List<Stock> getAllStocksGreaterCountAndByTypeSortByTime(int count, Type type) {
 
+        return stockRepo.findByStockOwnerCountGreaterThanEqualAndStockTypeOrderByStockCreationTimeStamp(count,type);
+    }
 
+    public List<Stock> getAllStocksGreaterTimeSortByPriceDesc(LocalDateTime time) {
 
+        return stockRepo.findByStockCreationTimeStampGreaterThanOrderByStockPriceDesc(time);
+    }
 }
 
 

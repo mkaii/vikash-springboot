@@ -4,6 +4,7 @@ import com.geekster.stockAPP.model.Stock;
 import com.geekster.stockAPP.model.Type;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -14,5 +15,8 @@ public interface IStockRepo extends CrudRepository<Stock,Long> {
     List<Stock> findByStockName(String stockName);
     List<Stock> findByStockOwnerCountGreaterThanAndStockPriceLessThanEqual(Integer count,double price);
 
-  //  List<Stock> findByStockPriceAndStockName(double price,String name);
+    List<Stock> findByStockOwnerCountGreaterThanEqualAndStockTypeOrderByStockCreationTimeStamp(int count, Type type);
+
+
+    List<Stock> findByStockCreationTimeStampGreaterThanOrderByStockPriceDesc(LocalDateTime time);
 }
