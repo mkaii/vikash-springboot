@@ -4,6 +4,7 @@ import com.geekster.stockAPP.dao.IStockRepo;
 import com.geekster.stockAPP.model.Stock;
 import com.geekster.stockAPP.model.Type;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
@@ -96,6 +97,13 @@ public class StockService {
     public List<Stock> getAllStocksGreaterTimeSortByPriceDesc(LocalDateTime time) {
 
         return stockRepo.findByStockCreationTimeStampGreaterThanOrderByStockPriceDesc(time);
+    }
+
+    public List<Stock> getNotTypeNotLikeThisPatternNotInCountsSortedPriceDesc(Type type, LocalDateTime before, LocalDateTime after, List<Integer> invalidOwnerCounts) {
+
+        //return stockRepo.findByStockTypeNotAndStockCreationTimeStampNotLikeAndStockOwnerCountNotInOrderByStockPriceDesc(type,datePattern,invalidOwnerCounts);
+        return stockRepo.findByStockTypeNotAndStockCreationTimeStampBeforeOrStockCreationTimeStampAfterAndStockOwnerCountNotInOrderByStockPriceDesc(type,before,after,invalidOwnerCounts);
+
     }
 }
 

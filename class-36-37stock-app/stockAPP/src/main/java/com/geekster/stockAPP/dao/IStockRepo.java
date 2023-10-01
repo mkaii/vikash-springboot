@@ -19,4 +19,9 @@ public interface IStockRepo extends CrudRepository<Stock,Long> {
 
 
     List<Stock> findByStockCreationTimeStampGreaterThanOrderByStockPriceDesc(LocalDateTime time);
+
+    List<Stock> findByStockTypeNotAndStockCreationTimeStampNotLikeAndStockOwnerCountNotInOrderByStockPriceDesc(Type type, String datePattern, List<Integer> invalidOwnerCounts);
+
+
+    List<Stock> findByStockTypeNotAndStockCreationTimeStampBeforeOrStockCreationTimeStampAfterAndStockOwnerCountNotInOrderByStockPriceDesc(Type type, LocalDateTime before, LocalDateTime after, List<Integer> invalidOwnerCounts);
 }

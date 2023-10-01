@@ -104,6 +104,15 @@ public class StockController {
     }
 
 
+    @GetMapping("stocks/not/type/{type}/not/start/{before}/{after}/not/in/ownerCounts/sort/desc/price")
+    public List<Stock> getNotTypeNotLikeThisPatternNotInCountsSortedPriceDesc(@PathVariable Type type,@PathVariable LocalDateTime before,@PathVariable LocalDateTime after, @RequestBody List<Integer> invalidOwnerCounts)
+    {
+        return stockService.getNotTypeNotLikeThisPatternNotInCountsSortedPriceDesc(type,before,after,invalidOwnerCounts);
+    }
+
+
+
+
 
 
 }
