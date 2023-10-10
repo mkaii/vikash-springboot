@@ -1,0 +1,20 @@
+SQL
+b 
+primary key = each value of a primaray key column should be linked with one row of the tabele.  column= values which lets us find a uniwe row in a (column where we added contrainst that each row primary key neewds to be uniqe)
+
+foreign key = a constrain that says that this column  can only contain the primary key value of some other table  
+
+what we achieve by this == each row of the customero table isuniqly linked with one row of salesmen table
+
+inner join = simply shows all the rows of each table next to each other left hand side will be the table you speicify first and usally will be based on some matcheing values like salesmen id. 
+ 
+left join =  show everything on the left table hoverwe if there is matching salesman_id pull in data frm right table 
+
+
+right join =  show everything on the right table hoverwe if there is matching salesman_id pull in data frm left table 
+
+
+null = when we do comarison wit null its always false  thats why we use is null/is not null ---> only this is allowed
+
+we can add a row with null value in the  the foreign key column because  we can not compare null with something and get a clear
+answer wheater it is is null or not null therefor null values are allwed --> this allowes us to have a customer from whom we dont kno who salesman i s
