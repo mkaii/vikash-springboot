@@ -54,10 +54,10 @@ public class RoomController {
      return service.availableByType(type);
     }
 
-    @GetMapping("rooms/availableBy/type{type}/belowPrice/{price}")
+    @GetMapping("rooms/type{type}/belowPrice/{price}")
     public List<Room> availableByTypeAndLessThenEqualPrice(@PathVariable Type type, @PathVariable double price){
 
-        return service.availableByTypeAndLessThenEqualPrice(type,price);
+        return service.availableAndLessThenEqualPrice(type,price);
     }
 
     @GetMapping("rooms/available")
@@ -72,8 +72,8 @@ public class RoomController {
         return service.countRooms();
     }
 
-    @GetMapping("room/{number}")
-    public  Room getByRoomNumber(@PathVariable Integer number ){
+    @GetMapping("rooms/roomNumber/{number}")
+    public  List<Room> getByRoomNumber(@PathVariable Integer number ){
         return service.getByRoomNumber(number);
     }
 

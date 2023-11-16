@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7842aaf5-14c9-43bc-905c-9e4e778587e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../class-15-spring-boot-annotation/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../class-15-spring-boot-annotation/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-24-todo-app-finihed/todo-app-api-finish/src/main/java/com/vikash/todoapp/TodoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-24-todo-app-finihed/todo-app-api-finish/src/main/java/com/vikash/todoapp/TodoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-26-finished-todo-app-with-mvc-architecture/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../class-26-finished-todo-app-with-mvc-architecture/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-29-30-31project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/SimpleEcommreseApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/controller/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/dao/ProductFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/dao/ProductRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/model/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-30-project-ecommmrse/simple-ecommrese/src/test/java/com/vikash/simpleecommrese/SimpleEcommreseApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-29-project-ecommmrse/simple-ecommrese/src/main/java/com/vikash/simpleecommrese/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/java/com/vikash/simpleecommrese/SimpleEcommreseApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/java/com/vikash/simpleecommrese/dao/EmployeesFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/java/com/vikash/simpleecommrese/dao/EmployeesRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/java/com/vikash/simpleecommrese/model/IncreasOrDeacrease.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/java/com/vikash/simpleecommrese/service/EmployeeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-32-employee-management-app/employee-management/src/test/java/com/vikash/simpleecommrese/SimpleEcommreseApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/controller/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/dao/IRoomRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/dao/IRoomRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../class-35-36-37hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/HotelManagmentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/controller/RoomController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/dao/IRoomRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/model/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/model/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/service/RoomService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/hotel-managment/src/test/java/com/example/vikash/hotelmanagment/HotelManagmentApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-36hotel-mangement/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/HotelManagmentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/model/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/src/main/java/com/example/vikash/hotelmanagment/model/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/hotel-managment/src/test/java/com/example/vikash/hotelmanagment/HotelManagmentApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-35-hotel-mangement/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/class-36-stock-app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/StockAppApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/controller/StockController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/dao/IStockRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/model/Stock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/model/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/java/com/geekster/stockAPP/service/StockService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockAPP/src/test/java/com/geekster/stockAPP/StockAppApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/StockAppApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/controller/StockController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/dao/IStockRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/model/Stock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/model/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/java/com/geekster/stockAPP/service/StockService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-36-stock-app/stockAPP/src/test/java/com/geekster/stockAPP/StockAppApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2VxM8HlBtb6QStv7e1NdRiJsWy3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;vikash-branch-practise-and-notes&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="StockAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekster.stockAPP.StockAppApplication" />
+      <module name="stockAPP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekster.stockAPP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StockAppApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7842aaf5-14c9-43bc-905c-9e4e778587e9" name="Changes" comment="" />
+      <created>1695773117178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695773117178</updated>
+    </task>
+    <servers />
+  </component>
+</project>

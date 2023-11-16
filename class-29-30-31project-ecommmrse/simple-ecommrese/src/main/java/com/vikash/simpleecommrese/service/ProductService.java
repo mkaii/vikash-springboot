@@ -22,6 +22,7 @@ public class ProductService {
         getAllProducts().put(product.getId(),product);
     }
 
+
     public void addProducts(List<Product> products) {
    Map<Integer,Product> existingProducts = getAllProducts();
    for(Product product: products){

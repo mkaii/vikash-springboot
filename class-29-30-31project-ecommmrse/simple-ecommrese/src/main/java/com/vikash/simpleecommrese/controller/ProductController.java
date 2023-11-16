@@ -4,13 +4,18 @@ import com.vikash.simpleecommrese.model.Category;
 import com.vikash.simpleecommrese.model.IncreasOrDeacrease;
 import com.vikash.simpleecommrese.model.Product;
 import com.vikash.simpleecommrese.service.ProductService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Validated
 @RestController
 public class ProductController {
 
@@ -63,23 +68,25 @@ public class ProductController {
 
     // get prodict by name
     @GetMapping("products/name/{name}")
-    public  List<Product> getProductById(@PathVariable String name){
+    public  List<Product> getProductById(@PathVariable @Size(min=4) String name){
         return productService.getProductByName(name);
     }
 
 
     //POST
 
-    // add single product
+    // add single product§
     @PostMapping("product")
     public String addProduct(@RequestBody Product product){
         productService.addProduct(product);
         return "added";
     }
 
+
     // add multiple products
+
     @PostMapping("products")
-    public String addProducts(@RequestBody List<Product> products){
+    public String addProducts(@RequestBody @Valid List<Product> products){
         productService.addProducts(products);
         return "added" + products.size() + "products";
     }

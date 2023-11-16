@@ -15,3 +15,10 @@ this should only call it if it needs i. this sata source should be private and i
 
 
 we iteriate hashmap via keyset 
+
+
+Swagger is a tool that will automatically create the api and makes it way esier to work with the endpont 
+and it saves a lot of time. you need dependency to add swagger in project 
+
+validation = a set of rules we achieve via annotations, for examople can  not be null!
+you to provide id! and so on.

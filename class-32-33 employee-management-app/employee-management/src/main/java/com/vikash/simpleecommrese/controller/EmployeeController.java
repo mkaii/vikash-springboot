@@ -30,20 +30,20 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    // get employye by id
+    // get employee by id
     @GetMapping("employee/id/{id}")
     public Employee getEmployeeById(@PathVariable Integer id){
         return employeeService.getEmployeeById(id);
     }
 
-    // get employye by name
+    // get employee by name
     @GetMapping("employee/emailId/{emailId}")
     public Employee getEmployeeByEmail(@PathVariable String emailId){
         return employeeService.getEmployeeByEmail(emailId);
     }
 
 
-    // get empoyees in a particular salery range
+    // get employees  in a particular salery range
     @GetMapping("salary/low/{low}/high/{high}")
     public List<Employee> getEmployeesInSalaryRange(@PathVariable double low, @PathVariable double high ){
         return employeeService.getEmployeesInSalaryRange(low,high);
@@ -73,7 +73,7 @@ public class EmployeeController {
         return employeeService.getEmployeesFullByName(firstName,lastName);
     }
 
-    // get Emplouees in a particularsaler range and gender
+    // get employees  in a particular salery range and gender
     @GetMapping("employee/low/{low}/high/{high}/{gender}")
     public List<Employee> getEmployeesInSalaryRangeAndGender(@PathVariable double low,@PathVariable double high,@PathVariable Gender gender ){
         return employeeService.getProductsInPriceRangeAndCategory(low,high,gender);
@@ -128,13 +128,13 @@ public class EmployeeController {
         return employeeService.deleteEmployee(id);
     }
 
-    // remove muliple employees
+    // remove multiple employees
     @DeleteMapping("employees/ids")
     public String deleteProduct(@RequestBody List<Integer>  idList){
         return employeeService.deleteEmployees(idList);
     }
 
-    // remove all emplyees based on gender
+    // remove all employees based on gender
 
     @DeleteMapping("products/gender/{gender}")
     public String deleteAllEmployeesByGender(@PathVariable Gender gender){

@@ -10,14 +10,14 @@ import java.util.List;
 @Repository
 public interface IRoomRepo extends CrudRepository<Room,Integer> {
 
-    List<Room> finByRoomAvailable(boolean b);
+    List<Room> findByRoomAvailable(boolean b);
 
 
-    List<Room> finByRoomAvailableAndRoomType(boolean e,Type type);
+    List<Room> findByRoomAvailableAndRoomType(boolean e, Type type);
 
  
 
-    List<Room> findByRoomPriceLessThenEqualAndAvailableByType(Type type, double price);
+    List<Room> findByRoomPriceLessThanEqualAndRoomType( double price,Type type);
 
-    Room findByRoomNumber(Integer number);
+    List<Room> findByRoomNumber(Integer number);
 }

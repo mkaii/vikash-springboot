@@ -15,6 +15,7 @@ client    <---controller<-(response)-view<-(calls)-Controller<--return to<--Serv
 
 
 models actualy means what all enteties you have in you code, in our case the real life entity is the Todo class, i have question is model service layer or does it contain entety class ?
+model should contain the enteties and service package should be separate
 
 
 flow of Todo-app =

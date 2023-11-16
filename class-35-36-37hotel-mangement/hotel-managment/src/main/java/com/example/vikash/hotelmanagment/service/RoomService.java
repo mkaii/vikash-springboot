@@ -73,7 +73,7 @@ public class RoomService {
     }
 */
     public List<Room> availableByType(Type type) {
-     return IRoomRepo.finByRoomAvailableAndRoomType(true,type);
+     return IRoomRepo.findByRoomAvailableAndRoomType(true,type);
     }
 
   /*  public List<Room> allAvailableRoooms() {
@@ -88,18 +88,18 @@ public class RoomService {
 
     public List<Room> allAvailableRoooms() {
 
-        return IRoomRepo.finByRoomAvailable(true);
+        return IRoomRepo.findByRoomAvailable(true);
     }
 
     public Integer countRooms() {
         return getAllRooms().size();
     }
 
-    public List<Room> availableByTypeAndLessThenEqualPrice(Type type, double price) {
-        return IRoomRepo.findByRoomPriceLessThenEqualAndAvailableByType(type,price);
+    public List<Room> availableAndLessThenEqualPrice(Type type, double price) {
+        return IRoomRepo.findByRoomPriceLessThanEqualAndRoomType(price,type);
     }
 
-    public Room getByRoomNumber(Integer number) {
+    public List<Room> getByRoomNumber(Integer number) {
         return  IRoomRepo.findByRoomNumber(number);
     }
 }
