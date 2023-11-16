@@ -32,9 +32,6 @@ public class AuthenticationService {
 
         return false;
 
-
-
-
     }
 
     public void deleteToken(String tokenValue) {

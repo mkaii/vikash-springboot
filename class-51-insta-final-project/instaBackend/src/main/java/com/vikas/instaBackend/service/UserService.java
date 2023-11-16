@@ -2,6 +2,7 @@ package com.vikas.instaBackend.service;
 
 
 import com.vikas.instaBackend.model.AuthenticationToken;
+import com.vikas.instaBackend.model.Post;
 import com.vikas.instaBackend.model.User;
 import com.vikas.instaBackend.repo.IUserRepo;
 import com.vikas.instaBackend.service.HashingUtility.PasswordEncryptor;
@@ -18,6 +19,9 @@ public class UserService {
 
     @Autowired
     AuthenticationService authenticationService;
+
+    @Autowired
+    PostService postService;
 
 
     public String userSignUp(User newUser) {
@@ -106,6 +110,60 @@ public class UserService {
         {
             return "Un Authenticated access!!!";
         }
+
+    }
+
+    public String createInstaPost(String email, String tokenValue, Post instaPost) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+           // insta post for this particular logged in user :
+
+            User existingUser = userRepo.findByUserEmail(email);
+            instaPost.setPostOwner(existingUser);
+
+            //save the instagram post
+            postService.createInstaPost(instaPost);
+            return instaPost.getPostType() + " posted!!";
+
+        }
+        else
+        {
+            return "Un Authenticated access!!!";
+        }
+
+    }
+
+    public String deleteInstaPost(String email, String tokenValue, Integer postId) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            Post instaPost =  postService.getPostById(postId);
+
+            //
+            if(instaPost.getPostOwner().getUserEmail().equals(email))
+            {
+                //finally delete the insta post
+                postService.removeById(postId);
+                return "post removed!!";
+            }
+            else {
+                return "Un authorized access!!";
+            }
+
+        }
+        else
+        {
+            return "Un Authenticated access!!!";
+        }
+
+    }
+
+    public String getLikesByPostId(String email, String tokenValue, Integer postId) {
+
+       return postService.getLikesForPost(postId);
+
+
 
     }
 }
