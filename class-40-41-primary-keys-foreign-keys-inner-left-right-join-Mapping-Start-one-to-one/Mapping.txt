@@ -1,9 +1,0 @@
-Mapping == when we have projects with muliple models/ enteties when we want to connect 
-
-
-one-to-one:  for.ex one customer is linked with one salesemen  
-
-many-to-one: for.ex many customer is linked with one salesemen  
-
-many-to-many: for.ex many customer is linked with many salesemen  
-
