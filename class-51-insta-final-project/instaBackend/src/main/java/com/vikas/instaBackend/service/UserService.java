@@ -5,6 +5,7 @@ import com.vikas.instaBackend.model.AuthenticationToken;
 import com.vikas.instaBackend.model.Post;
 import com.vikas.instaBackend.model.User;
 import com.vikas.instaBackend.repo.IUserRepo;
+import com.vikas.instaBackend.service.EmailUtility.MailHandlerBase;
 import com.vikas.instaBackend.service.HashingUtility.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,8 +83,14 @@ public class UserService {
                 //login should be allowed using token
                 AuthenticationToken token  = new AuthenticationToken(existingUser);
 
-                authenticationService.createToken(token);
-                return "check email for otp/token!!!";
+                if(MailHandlerBase.sendEmail(email,"otp after login", token.getTokenValue())) {
+                    authenticationService.createToken(token);
+                    return "check email for otp/token!!!";
+                }
+                else {
+                    return "error while generating token!!!";
+                }
+
 
             }
             else {
