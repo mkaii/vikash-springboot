@@ -24,7 +24,6 @@ public class UserController {
         return userService.userSignUp(newUser);
     }
 
-
     //user sign in
 
     @PostMapping("user/signIn/{email}/{password}")
@@ -66,9 +65,5 @@ public class UserController {
     {
         return userService.getLikesByPostId(email,tokenValue,postId);
     }
-
-
-
-
 
 }
