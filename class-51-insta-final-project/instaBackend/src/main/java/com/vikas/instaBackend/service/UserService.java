@@ -163,7 +163,5 @@ public class UserService {
 
        return postService.getLikesForPost(postId);
 
-
-
     }
 }
