@@ -1,9 +1,0 @@
-git init
-git status
-git status -u (show all the changes in the inner folders as well)
-git add <file name>
-git add .
-git restore --staged <relative-file-path>
-git commit -m "<commit -msg>"
-git log - to see a the commits
-git remote -v (shows the remote copy link of the local repo)

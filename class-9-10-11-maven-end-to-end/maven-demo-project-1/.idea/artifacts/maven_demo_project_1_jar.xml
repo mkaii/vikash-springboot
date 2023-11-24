@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="maven-demo-project-1:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/maven_demo_project_1_jar</output-path>
-    <root id="archive" name="maven-demo-project-1.jar">
-      <element id="module-output" name="maven-demo-project-1" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
