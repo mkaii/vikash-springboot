@@ -1,0 +1,11 @@
+Autenthication token = whenever you log in tokens are made we want to maintain theese tokens
+to see if someone has logggin in and for how long somone has logged in and so on.Theese tokens 
+will be unique for each login. ---> UUID(random num that is actual val of token)  
+
+
+
+
+home work 
+
+find a good email regex
+

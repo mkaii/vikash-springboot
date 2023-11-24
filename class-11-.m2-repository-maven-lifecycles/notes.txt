@@ -1,0 +1,14 @@
+.m2-repository = when we add our cordinates of depency in our pom.xml file the jars needed is downloaded into the .m2 folder. This is where the external library acessing the jar from.
+if we remove the dependecy in project the jars will still remain in the .m2 folder.
+If we try to add back depencency in our project, as it it still saved in .m2 folder it directly acesses it from there and downloads into our local project instead of needing to
+go to mvn remote repository.
+
+maven lifycycles methods = it is gui versions of the maven commands but because intellji is bundled wit maven we dont need the manual commands.
+1. clean = removes .class code from target folder.and also delete target folder
+2. validate = for validatinf the project configuration only checks for non code for example if there is some issue in pom.xml file.   
+3.Compile = Will create bytecode, will regenerate the classes in main from .java  into .class in a new folder called target.This is from where we run the code. 
+4.Test = create .class files and puts it into the test folder(integration test).
+5.package = Takes the compiled code and packages it into format such as JAR/WAR
+6.verify  = run checks on the result of the tests to ensure quality required is met
+7.install = puts an executable file in local folder from where it can be imported by local projects.
+8.deploy = copies an executable file to remote repository for sharing with others. s

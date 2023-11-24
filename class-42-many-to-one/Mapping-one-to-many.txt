@@ -1,0 +1,4 @@
+many-to-one: for.ex many emplyees is linked with one adress  
+
+
+

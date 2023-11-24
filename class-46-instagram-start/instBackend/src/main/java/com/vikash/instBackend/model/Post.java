@@ -21,6 +21,7 @@ public class Post {
     private String postContent;// we will keep a url in this field
     private String postCaption;
     private String postLocation;
+    @Enumerated(EnumType.STRING)
     private PostType postType;
     private LocalDateTime postCreatedTimeStamp;
 

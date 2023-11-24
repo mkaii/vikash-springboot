@@ -1,0 +1,27 @@
+SQL = Structured Query Language  =
+
+
+ex. 
+
+Student class {
+id
+name
+age              --------------->> Each object of student class will have id,name,age
+                                   only values will change when we create multiple
+                                   objects of cour class. In sql table the variables will
+                                   be the columns and the values will be the rows
+}
+
+this is what we means when we say data is stored in  a structured way
+each record of this tablehas one relation, it is some id,name and age.
+
+rdbms -> relational  
+all the records in this table has something uniqe all id  name and age 
+
+
+SQL default port -> 3306
+
+
+Server ---multiple---> Databases ---multiple--> Tables
+
+

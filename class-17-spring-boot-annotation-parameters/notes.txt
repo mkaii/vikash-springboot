@@ -1,0 +1,5 @@
+@PathVariable = the value to be given is part of path,whatever you are passing it has to be in {}so youcan 
+know this is not a part of like any other string part of the path, indicated this is a separate value. You wil lreciveve it in some parameter of the method.Parameter
+ name and the path defined in endpoint should be same  in order @Pathvariable to work.
+
+

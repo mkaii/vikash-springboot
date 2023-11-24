@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -25,4 +26,11 @@ public class AuthenticationToken {
     @OneToOne
     @JoinColumn(name = "fk_user_Id")
     User user;
+
+    // create contructior which take user as argument
+    public AuthenticationToken(User user){
+        this.user=user;
+        this.tokenValue= UUID.randomUUID().toString();
+        this.tokenCreationDateTime = LocalDateTime.now();
+    }
 }

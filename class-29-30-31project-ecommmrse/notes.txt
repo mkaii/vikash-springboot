@@ -1,0 +1,24 @@
+flow of e-commerse app =
+
+Controller class = It has all the api 
+
+service = it has all the method and logig
+
+first entry pint of request comes to controller to be alble to call corresponding method in servicr 
+layer we need reference of that class in Controller class, in our case it is ProductService productService -> now via
+ prodcuService e call the methods from service layer.
+
+
+Repo class = if method from service layer needs to interact with the tdatatsource we need a lokal reference of that
+class in our service class case its  ProductRepo productRepo. Repo class we have methpds to work on this datat source so we dont expose it directly( for example get of haspmap ,put of hashmap),
+this should only call it if it needs i. this sata source should be private and it should note be accessed directly to service layer onlye acces via some methods in repo class
+
+
+we iteriate hashmap via keyset 
+
+
+Swagger is a tool that will automatically create the api and makes it way esier to work with the endpont 
+and it saves a lot of time. you need dependency to add swagger in project 
+
+validation = a set of rules we achieve via annotations, for examople can  not be null!
+you to provide id! and so on.

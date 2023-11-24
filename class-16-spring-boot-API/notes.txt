@@ -1,0 +1,25 @@
+COntroller= wherever we define our api this is our controller
+
+API = is a maethod which is not local to our system(remotMethod)
+
+
+hhtp method looks for path and what method to call correwsponding to this api. what is allowed to acyually happen it is based on the logic inside method. (put.post.delete.patch)is just indication of what method should do if thing
+s ar restful then put post should ideally post seometing and delete should ideally delete something and so on  
+
+
+to accept input parameters:
+1.pathvariable= nothing changes in url we have to change api locally in our system we  
+have to add {someValue} in api path and  annototation (@PathVariable Integer someValue) -> this tells look for
+ somevalue that is passed int the path and replaceses it 
+
+
+@PostMapping("") -> is when you want to ost a value  for example:
+
+@PostMapping("name")
+
+public void anyMethodName(@Pathvariable String name)
+
+objectName.add(names)
+
+
+to see if value is passed we Get of the patch object is located in to se iff value is added.

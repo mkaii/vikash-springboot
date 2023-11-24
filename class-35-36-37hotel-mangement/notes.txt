@@ -1,0 +1,47 @@
+In permanent storage for examplewhen we stored in arraylist or hahsmap via garbage collection 
+it automatically cleans everything from the ram memeory but in sql work bench 
+grbage collections does not exist for the db. 
+
+before we talk to databse via  jdcbc queries as strings this was very tedius instead of directly using 
+JPA/HIBARNATE ---> 
+
+
+camelcasing in our ide in java is represented with snake case but it is representing the same fields
+
+@Column = lets us acess methods with for example lets us change the name of some column, not that this only works when you drop the current table 
+else it illjust add a new column 
+
+@Table() = we can use this for example to change table name again here we have to drop table or it will create a entierly new table witht he altered nameä
+
+We would always need table for the entity classes, where member variablles will be the columns and the rows will be the objects ow uniqe values.
+
+interface will be our repo where we need to extend crudrepository in here we can acess basic crud methods wich accepts table type(ino ur case its ROOM),id data type(Integer)
+
+we need to add @Repository annotation to interface class so we can do dependency injection to RoomService where we crreate referance of interface ans add @Aoutowired
+
+
+     when we use the get all method we reurn a List<Rooms> but the one who created that methods do not know our return type that is why we need to typecast into list 
+
+ delete from rooms to delete all the rows
+
+save is for creating and updating value   for example if we say on key 1 we have object 1 if we crate new object and post with same key 
+the latest object will replace the previus one
+
+
+Custom Finders= 
+
+for example in our case when we try to fnd available rooms. i i did a java code which will itirate over all the rows and if availbe is true then return that room 
+in i sql query it would be represented in this way --> select star from room and then check the condition via java code. 
+issue with this is that there could be a really large num of records and we really do not need to iteriate trough all the records instead we can fire the query
+
+selelct star  from room where avaable = true
+
+this whill giv use directly all the avalaible rooms but the issue is that crud repository methods only allows you to deal eith the variable on which you have written @id on top of.(find all or find by id)
+the solution is to  custom finder which we will write our name of method in a way where sql will interpred the logic.
+
+Optional gives the return value true or false based on if what we pass exist or not in records 
+
+rules of custom finders
+1.
+
+ 
