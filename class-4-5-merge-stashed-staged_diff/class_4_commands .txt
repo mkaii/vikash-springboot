@@ -1,0 +1,9 @@
+git merge <commit_id>  = like rebase but commit structure may change
+git cherry-pick <commit_id> = can apply only commit to branch insted merging or rebase 
+git stash -u = will save change in stack to be retrived when we want.will not show in staged or untracked 
+git stash apply = retrieve change from stack. this works in last in first out fashion
+git diff --staged = will show changes made in file in staging area.
+git diff --staged> path/<anyName.PATCH> = will create a patch file with the changes made of we can send and somone can apply.
+
+
+  
