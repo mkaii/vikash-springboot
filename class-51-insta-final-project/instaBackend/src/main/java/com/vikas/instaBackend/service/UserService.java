@@ -2,6 +2,7 @@ package com.vikas.instaBackend.service;
 
 
 import com.vikas.instaBackend.model.AuthenticationToken;
+import com.vikas.instaBackend.model.Like;
 import com.vikas.instaBackend.model.Post;
 import com.vikas.instaBackend.model.User;
 import com.vikas.instaBackend.repo.IUserRepo;
@@ -23,6 +24,9 @@ public class UserService {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    LikeService likeService;
 
 
     public String userSignUp(User newUser) {
@@ -169,6 +173,72 @@ public class UserService {
     public String getLikesByPostId(String email, String tokenValue, Integer postId) {
 
        return postService.getLikesForPost(postId);
+
+    }
+
+    public String addLike(String email, String tokenValue, Integer postId) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            //figure out the actual post
+            Post instaPost =  postService.getPostById(postId);
+
+
+            //figure out the user - corresponding to the email -> liker
+            User liker = userRepo.findByUserEmail(email);
+
+
+
+            // first check whether this liker has already liked this insta post
+
+            boolean alreadyLiked = likeService.isAlreadyLiked(instaPost,liker);
+
+            if(!alreadyLiked)
+            {
+                Like newLike = new Like(null,instaPost,liker);
+
+                likeService.addLike(newLike);
+
+                return liker.getUserHandle() + " liked " +  postId;
+            }
+            else {
+                return "already liked";
+            }
+
+
+        }
+        else
+        {
+            return "Un Authenticated access!!!";
+        }
+
+    }
+
+    public String removeLike(String email, String tokenValue, Integer postId) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            //figure out the actual post
+            Post instaPostToBeUnLiked =  postService.getPostById(postId);
+
+
+            //figure out the user - corresponding to the email -> unliker
+            User unliker = userRepo.findByUserEmail(email);
+
+
+            return likeService.removeLikesByLikerAndPost(unliker,instaPostToBeUnLiked);
+
+
+        }
+        else
+        {
+            return "Un Authenticated access!!!";
+        }
+
+
+
+
+
 
     }
 }

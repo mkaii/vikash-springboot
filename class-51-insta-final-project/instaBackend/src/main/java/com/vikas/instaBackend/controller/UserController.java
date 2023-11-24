@@ -59,11 +59,43 @@ public class UserController {
 
 
     //get all the likes for a particular post:
-
     @GetMapping("count/likes/post/{postId}")
     public String getLikesByPostId(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer postId)
     {
         return userService.getLikesByPostId(email,tokenValue,postId);
     }
+
+    // add like -- liking some particular post
+
+    @PostMapping("like/post/{postId}")
+    public String addLike(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer postId)
+    {
+        return userService.addLike(email,tokenValue,postId);
+    }
+
+    // remove like - un-like some particular post
+    @DeleteMapping("unlike/post/{postId}")
+    public String removeLike(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer postId)
+    {
+        return userService.removeLike(email,tokenValue,postId);
+    }
+
+    //comment apis
+
+
+    @PostMapping("comment/post/{postId}")
+    public String addComment(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer postId,@RequestBody String commentBody )
+    {
+        return userService.addComment(email,tokenValue,commentBody,postId);
+    }
+
+
+    @DeleteMapping("post/comment/{commentId}")
+    public String removeComment(@RequestParam String email, @RequestParam String tokenValue,
+                                @PathVariable Integer commentId)
+    {
+        return userService.removeComment(email,tokenValue,commentId);
+    }
+
 
 }
