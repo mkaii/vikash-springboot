@@ -82,6 +82,8 @@ public class UserController {
 
     //comment apis
 
+    //get comments for a particular post
+
 
     @PostMapping("comment/post/{postId}")
     public String addComment(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer postId,@RequestBody String commentBody )
@@ -95,6 +97,13 @@ public class UserController {
                                 @PathVariable Integer commentId)
     {
         return userService.removeComment(email,tokenValue,commentId);
+    }
+
+
+    @PostMapping("follow/user/{targetUserId}")
+    public String followTarget(@RequestParam String email, @RequestParam String tokenValue, @PathVariable Integer targetUserId)
+    {
+        return userService.followTarget(email,tokenValue,targetUserId);
     }
 
 

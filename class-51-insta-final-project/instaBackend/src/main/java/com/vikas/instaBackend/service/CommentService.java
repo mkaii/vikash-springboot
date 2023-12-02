@@ -25,4 +25,16 @@ public class CommentService {
         commentRepo.deleteAll(postComments);
 
     }
+
+    public void addComment(Comment newComment) {
+        commentRepo.save(newComment);
+    }
+
+    public Comment findCommentById(Integer commentId) {
+        return commentRepo.findById(commentId).orElseThrow();
+    }
+
+    public void removeCommentById(Integer commentId) {
+        commentRepo.deleteById(commentId);
+    }
 }
