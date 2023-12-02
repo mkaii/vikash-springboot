@@ -1,10 +1,7 @@
 package com.vikas.instaBackend.service;
 
 
-import com.vikas.instaBackend.model.AuthenticationToken;
-import com.vikas.instaBackend.model.Like;
-import com.vikas.instaBackend.model.Post;
-import com.vikas.instaBackend.model.User;
+import com.vikas.instaBackend.model.*;
 import com.vikas.instaBackend.repo.IUserRepo;
 import com.vikas.instaBackend.service.EmailUtility.MailHandlerBase;
 import com.vikas.instaBackend.service.HashingUtility.PasswordEncryptor;
@@ -12,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 
 @Service
 public class UserService {
@@ -27,6 +25,12 @@ public class UserService {
 
     @Autowired
     LikeService likeService;
+
+    @Autowired
+    CommentService commentService;
+
+    @Autowired
+    FollowService followService;
 
 
     public String userSignUp(User newUser) {
@@ -236,9 +240,86 @@ public class UserService {
         }
 
 
+    }
+
+    public String addComment(String email, String tokenValue, String commentBody, Integer postId) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            //figure out the post which we are commenting
+            Post instaPostToBeCommented = postService.getPostById(postId);
+
+            //we have to figure out the commentor
+            User commentor = userRepo.findByUserEmail(email);
+
+            // functionally more than 1 comment can be made on a particular post
+
+            Comment newComment = new Comment(null,commentBody,
+                    LocalDateTime.now(), instaPostToBeCommented, commentor);
+
+            commentService.addComment(newComment);
+
+            return commentor.getUserHandle() + " commented on " + postId;
 
 
+        }
+        else {
+            return "Un Authenticated access!!!";
+        }
+    }
 
+    public String removeComment(String email, String tokenValue, Integer commentId) {
 
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            Comment comment = commentService.findCommentById(commentId);
+
+            Post instaPostOfComment = comment.getInstaPost();
+
+            if(authorizeCommentRemover(email,instaPostOfComment,comment))
+            {
+                commentService.removeCommentById(commentId);
+                return "comment deleted";
+            }
+            else {
+                return "Not authorized!!";
+            }
+
+        }
+        else {
+            return "Un Authenticated access!!!";
+        }
+
+    }
+
+    private boolean authorizeCommentRemover(String email, Post instaPostOfComment, Comment comment) {
+
+        User potentialRemover = userRepo.findByUserEmail(email);
+
+        //only the commentor and the owner of the post should be allowed to remove a comment
+
+        return potentialRemover.equals(instaPostOfComment.getPostOwner()) || potentialRemover.equals(comment.getCommenter());
+    }
+
+    public String followTarget(String email, String tokenValue, Integer targetUserId) {
+
+        if(authenticationService.authenticate(email,tokenValue)) {
+
+            User follower = userRepo.findByUserEmail(email);
+            User target = userRepo.findById(targetUserId).orElseThrow();
+
+            if(followService.authorizeToFollow(follower,target))
+            {
+                followService.startFollowing(follower,target);
+                return follower.getUserHandle() + " started following " + target.getUserHandle();
+            }
+            else {
+                return "Already follows, cannot re-follow";
+            }
+
+        }
+        else {
+            return "Un Authenticated access!!!";
+        }
     }
 }
